@@ -1,0 +1,147 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("mountain.jpg");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.58; /* Adjust the opacity as needed */
+    z-index: -1;
+}
+.container {
+    position: relative;
+    border-radius: 8px; /* Curved edges */
+    padding: 20px;
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+    overflow: hidden; /* To ensure pseudo-element does not overflow */
+    color: black;
+    
+}
+
+h1 {
+    margin-bottom: 20px;
+    position: relative; /* To ensure it stays above the pseudo-element */
+}
+
+.weather-dashboard {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 0 20px;
+    position: relative; /* To ensure it stays above the pseudo-element */
+    gap: 20px;
+}
+
+.left-container, .right-container {
+    flex: 1;
+    background-color: rgba(4, 0, 0, 0.2); /* Semi-transparent background to enhance readability */
+    border-radius: 8px; /* Curved edges */
+    padding: 10px; /* Padding inside the container */
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1); /* Slight shadow for better separation */
+    position: relative; /* To ensure it stays above the pseudo-element */
+    color: aliceblue;
+    backdrop-filter: blur(10px);
+    border: 2px solid white;
+}
+
+
+.left-container .temp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.left-container .temp h2 {
+    margin-right: 10px;
+}
+
+.left-container p, .right-container p {
+    margin: 5px 0;
+}
+
+.back-link {
+    margin-top: 20px;
+    text-align: center;
+    position: relative; /* To ensure it stays above the pseudo-element */
+}
+
+.back-link a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.back-link a:hover {
+    text-decoration: underline;
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+    position: relative; /* To ensure it stays above the pseudo-element */
+}
+body {
+    margin: 0;
+  }
+  
+  .navbar {
+    /*background-color: #f8f9fa; /* Light background color */
+    padding: 1rem;
+    width: 98%; /* Full width */
+    position: fixed; /* Fix the navbar at the top */
+    top: 0;
+    left: 0;
+   /* z-index: 1000; /* Ensure it stays on top of other elements */
+    backdrop-filter: blur(30px) ;
+    box-shadow: 0px 0px 30px rgba(227,228,237,0.37);
+    border:2px solid rgba(255,255, 255, 0.18);
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .form-control {
+    flex: 1; /* Make the input take available space */
+    min-width: 0; /* Prevent the input from getting too narrow */
+  }
+  
+  .btn-outline-success {
+    border-color: #28a745;
+    color: #28a745;
+    padding-left: 5%;
+  }
+  
+  .btn-outline-success:hover {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .container-fluid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allow items to wrap if needed */
+  }
+  
+  .d-flex {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px; /* Space between input and button */
+  }

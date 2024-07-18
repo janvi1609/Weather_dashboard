@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand">Weather Dashboard</a>
+            <form class="d-flex" role="search" action="/" method="post">
+                <input class="form-control me-2" type="search" name="city" placeholder="Enter city" required>
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="container">
+        {% if weather %}
+        <h1>Weather in {{ weather['name'] }}</h1>
+        <div class="weather-dashboard">
+            <div class="left-container">
+                <div class="temp">
+                    <h2>{{ weather['main']['temp'] }}°C</h2>
+                    <img src="http://openweathermap.org/img/wn/{{ weather['weather'][0]['icon'] }}@2x.png" alt="weather icon">
+                </div>
+                <p>{{ weather['weather'][0]['description'].title() }}</p>
+                <p>Feels like {{ weather['main']['feels_like'] }}°C</p>
+            </div>
+            <div class="right-container">
+                <p>High: {{ weather['main']['temp_max'] }}°C</p>
+                <p>Low: {{ weather['main']['temp_min'] }}°C</p>
+                <p>Humidity: {{ weather['main']['humidity'] }}%</p>
+                <p>Wind: {{ weather['wind']['speed'] }} m/s</p>
+                <p>Visibility: {{ weather['visibility'] / 1000 }} km</p>
+                <p>Cloudiness: {{ weather['clouds']['all'] }}%</p>
+                <p>Dew Point: {{ weather['main']['dew_point'] if 'dew_point' in weather['main'] else 'N/A' }}°C</p>
+                <p>Sunrise: {{ weather['sys']['sunrise'] | timestamp_to_time }}</p>
+                <p>Sunset: {{ weather['sys']['sunset'] | timestamp_to_time }}</p>
+            </div>
+        </div>
+        {% elif error_message %}
+        <div class="error-message">
+            <p style="font-size: 40px;">{{ error_message }}</p>
+        </div>
+        {% else %}
+        <div class="intro-message">
+            <p style="font-size: 40px;">Enter a city to get the current weather.</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
